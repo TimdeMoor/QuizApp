@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="db">
+  <DataContextMoniker Name="/dbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b6af5bfb-a224-43f5-8945-1b7e7dcfa91f" absoluteBounds="3.5, 1, 2, 1.5785953776041664">
+      <DataClassMoniker Name="/dbDataContext/Vraag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="640b60dc-edb8-4ae4-a29c-d592560755ef" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="224d9eb7-7702-457d-9c50-e4fb898063dd" absoluteBounds="0.75, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/dbDataContext/SubCategorie" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8df05be-6b20-4e6a-b158-bdff396e1ac4" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="97e632a5-7304-410d-b209-b2eb6f5585bf" absoluteBounds="6.25, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/dbDataContext/Antwoord" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db982098-aed7-47f6-89e7-d9d83c3c940c" absoluteBounds="6.265, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.78929768880208); (3.5 : 1.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDataContext/SubCategorie/SubCategorie_Vraag" />
+      <nodes>
+        <classShapeMoniker Id="224d9eb7-7702-457d-9c50-e4fb898063dd" />
+        <classShapeMoniker Id="b6af5bfb-a224-43f5-8945-1b7e7dcfa91f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.75 : 1.50298725335537); (0.5 : 1.50298725335537); (0.5 : 2.0301696113782); (0.75 : 2.0301696113782)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dbDataContext/SubCategorie/SubCategorie_SubCategorie" />
+      <nodes>
+        <classShapeMoniker Id="224d9eb7-7702-457d-9c50-e4fb898063dd" />
+        <classShapeMoniker Id="224d9eb7-7702-457d-9c50-e4fb898063dd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.78929768880208); (6.25 : 1.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbDataContext/Vraag/Vraag_Antwoord" />
+      <nodes>
+        <classShapeMoniker Id="b6af5bfb-a224-43f5-8945-1b7e7dcfa91f" />
+        <classShapeMoniker Id="97e632a5-7304-410d-b209-b2eb6f5585bf" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

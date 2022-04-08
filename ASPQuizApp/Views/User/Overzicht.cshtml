@@ -1,0 +1,29 @@
+﻿@model GebruikerLijstViewModel;
+@{
+    <h1>Gebruiker Overzicht</h1>
+    <h4><a class="btn btn-success" asp-controller="User" asp-action="Add">Gebruiker Toevoegen</a></h4>
+    <form method="post">
+        <table class="table-hover table">
+            <thead>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Admin</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--TODO: Fix empty table error-->
+                @foreach (GebruikerDetailsViewModel g in Model.GebruikerDetailsLijst)
+                {
+                    <tr>
+                        <td>@g.Name</td>
+                        <td>@g.Email</td>
+                        <td>@g.IsAdmin</td>
+                        <td><a class="btn btn-info" asp-controller="User" asp-action="Details" asp-route-id="@g.Id">Details</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}

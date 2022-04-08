@@ -1,0 +1,94 @@
+﻿@model QuizCompleteViewModel
+
+@{
+    <link rel="stylesheet" href="~/css/quizCompleteStyle.css" />
+    <div class="container">
+
+        <!--Heading-->
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6 text-center">
+                <h2>Quiz Afgerond</h2>
+                <h3>Je score is @Model.Score van de @Model.AantalVragen</h3>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <!--Percentage wheel-->
+        <div class="row justify-content-center" style="padding-top:100px;">
+            <div class="col-1 text-center">
+                <div class="align-self-center">
+                    <div class="circular">
+                        <div class="inner"></div>
+                        <div class="number">@Math.Floor((Convert.ToDecimal(Model.Score) / Convert.ToDecimal(Model.AantalVragen)) * 100)%</div>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Results-->
+        <div class="row justify-content-center text-center" style="padding-top:100px;">
+            <h2>Antwoorden</h2>
+        </div>
+        <div class="row justify-content-center text-center" style="padding-top:10px;">
+
+            @{
+                string cardStyle = "";
+
+                @for (int i = 0; i < Model.AantalVragen; i++)
+                {
+                    @if (Model.CorrecteAntwoorden[i] == Model.SelectedAntwoorden[i])
+                    {
+                        cardStyle = "bg-success";
+                    }
+                    else
+                    {
+                        cardStyle = "bg-danger";
+                    }
+
+                    <div class="card @cardStyle" style="width: 16rem;">
+                        <div class="card-header">
+                            <h4 class="card-title head">@Model.Vragen[i]</h4>
+                        </div>
+                        <div class="card-body">
+                            <b class="card-text">Correcte Antwoord: </b>
+                            <p>@Model.CorrecteAntwoorden[i]</p>
+                            <b class="card-text">Geselecteerde Antwoord: </b>
+                            <p>@Model.SelectedAntwoorden[i]</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+
+        <!--End button-->
+        <div class="row justify-content-center" style="padding-top:100px;">
+            <div class="col-4 text-center">
+                <a class="text-light btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Probeer Opnieuw</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @@keyframes left {
+            100% {
+                transform: rotate(@Model.GetDisplayValues()[0]deg);
+            }
+        }
+
+        @@keyframes right {
+            100% {
+                transform: rotate(@Model.GetDisplayValues()[1]deg);
+            }
+        }
+    </style>
+}

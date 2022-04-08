@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Quizapp.ucCategorieOverzicht"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quizapp"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="750">
+    <Grid Background="White">
+        <Button Content="Toevoegen" x:Name="btnCategorieToevoegen" Margin="20" Height="40" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="120" Click="btnCategorieToevoegen_Click"/>
+        <DataGrid IsReadOnly="True" Margin="60" x:Name="dtgCategorieën" HorizontalAlignment="Stretch" Height="340" VerticalAlignment="Top" AutoGenerateColumns="False" Width="400">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding naam}" ClipboardContentBinding="{x:Null}" Header="Categorie"/>
+                <DataGridTextColumn Binding="{Binding beschrijving}" ClipboardContentBinding="{x:Null}" Header="Beschrijving"/>
+                <DataGridTextColumn Binding="{Binding SubCategorie1.naam}" ClipboardContentBinding="{x:Null}" Header="Subcategorie"/>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEditCategorie" Content="Edit" Click="btnEditCategorie_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnDeleteCategorie" Content="Delete" Click="btnDeleteCategorie_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="CATEGORIE OVERZICHT" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top" FontSize="24"/>
+    </Grid>
+</UserControl>

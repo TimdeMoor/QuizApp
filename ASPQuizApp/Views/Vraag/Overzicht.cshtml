@@ -1,0 +1,24 @@
+﻿<h1>Vragen Overzicht</h1>
+<h4><a class="btn btn-success" asp-controller="Vraag" asp-action="Add">Vraag Toevoegen</a></h4>
+<form method="post">
+    <table class="table-hover table">
+        <thead>
+            <tr>
+                <th scope="col">Vraag</th>
+                <th scope="col">Categorie</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--TODO: Fix empty table error-->
+            @foreach (VraagDetailsViewModel v in Model.Vragen)
+            {
+                <tr>
+                    <td>@v.Text</td>
+                    <td>@v.SubCategorieNaam</td>
+                    <td><a class="btn btn-info" asp-controller="Vraag" asp-action="Details" asp-route-id="@v.Id">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

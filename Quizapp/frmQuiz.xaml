@@ -1,0 +1,15 @@
+﻿<Window x:Class="Quizapp.frmQuiz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quizapp"
+        mc:Ignorable="d"
+        Title="frmQuiz" Height="450" Width="800">
+    <Grid>
+        <Label Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" FontSize="32" Name="lblVraag"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Name="txtAntwoord" KeyDown="txtAntwoord_KeyDown"/>
+        <Button Content="Check antwoord" HorizontalAlignment="Center" Margin="0,0,0,100" VerticalAlignment="Bottom" Width="75" Name="btnCheck" Click="btnCheck_Click"/>
+
+    </Grid>
+</Window>

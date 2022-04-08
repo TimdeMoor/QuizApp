@@ -1,0 +1,31 @@
+﻿<h1>Registreer</h1>
+<fieldset>
+    <form asp-action="SaveUser" asp-controller="Home" method="post">
+        <table>
+            <tr>
+                <td><p>Gebruikersnaam</p></td>
+                <td><input type="text" name="Name"  required/></td>
+            </tr>
+            <tr>
+                <td><p>Wachtwoord</p></td>
+                <td><input type="password" name="Pass"  required/></td>
+            </tr>
+            <tr>
+                <td><p>Herhaal Wachtwoord</p></td>
+                <td><input type="password" name="Pass2"  required/></td>
+            </tr>
+            <tr>
+                <td><p>Email</p></td>
+                <td><input type="email" name="Email"  required/></td>
+            </tr>
+            <tr>
+                <td>
+                    <p></p>
+                </td>
+                <td>
+                    <input type="submit" name="btnLogin" value="Registreer">
+                </td>
+            </tr>
+        </table>
+    </form>
+</fieldset>

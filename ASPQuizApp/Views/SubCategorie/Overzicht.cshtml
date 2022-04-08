@@ -1,0 +1,30 @@
+﻿@model SubCategorieLijstViewModel
+@{
+}
+
+<h1>Categorie Overzicht</h1>
+<h4><a class="btn btn-success" asp-controller="SubCategorie" asp-action="Add">Categorie Toevoegen</a></h4>
+<form method="post">
+    <table class="table-hover table">
+        <thead>
+            <tr>
+                <th scope="col">Naam</th>
+                <th scope="col">Beschrijving</th>
+                <th scope="col">Subcategorie van</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--TODO: Fix empty table error-->
+            @foreach (SubCategorieDetailsViewModel sc in Model.SubCategorieLijst)
+            {
+                <tr>
+                    <td>@sc.Naam</td>
+                    <td>@sc.Beschrijving</td>
+                    <td>@sc.ParentSubCategorie</td>
+                    <td><a class="btn btn-info" asp-controller="SubCategorie" asp-action="Details" asp-route-id="@sc.Id">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

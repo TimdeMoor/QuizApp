@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuizApp" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-29CMDRN\SQLEXPRESS;Initial Catalog=QuizApp;Integrated Security=True" SettingsObjectName="Quizapp.Properties.Settings" SettingsPropertyName="QuizAppConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Vraag" Member="Vraags">
+    <Type Name="Vraag">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="text" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="subCategorieId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Vraag_Antwoord" Member="Antwoords" ThisKey="id" OtherKey="vraagId" Type="Antwoord" />
+      <Association Name="SubCategorie_Vraag" Member="SubCategorie" ThisKey="subCategorieId" OtherKey="id" Type="SubCategorie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubCategorie" Member="SubCategories">
+    <Type Name="SubCategorie">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="parentSubCategorieId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="naam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="beschrijving" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="SubCategorie_Vraag" Member="Vraags" ThisKey="id" OtherKey="subCategorieId" Type="Vraag" />
+      <Association Name="SubCategorie_SubCategorie" Member="SubCategories" ThisKey="id" OtherKey="parentSubCategorieId" Type="SubCategorie" />
+      <Association Name="SubCategorie_SubCategorie" Member="SubCategorie1" ThisKey="parentSubCategorieId" OtherKey="id" Type="SubCategorie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Antwoord" Member="Antwoords">
+    <Type Name="Antwoord">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="text" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="isCorrect" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vraagId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Vraag_Antwoord" Member="Vraag" ThisKey="vraagId" OtherKey="id" Type="Vraag" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

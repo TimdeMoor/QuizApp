@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>517bdf28-3885-4ef1-8cb9-d514a2f33006</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="wwwroot\Images\Background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuizLib\QuizLib.csproj" />
+  </ItemGroup>
+
+</Project>

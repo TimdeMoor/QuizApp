@@ -1,0 +1,32 @@
+﻿@model AddVraagViewModel
+@{
+    <h1>Nieuwe Vraag Toevoegen</h1>
+    <form method="post" id="addVraagForm">
+        <table id="addVraagTable">
+            <tr>
+                <td>Vraag:</td>
+                <td><input type="text" name="txtVraag" required /></td>
+            </tr>
+            <tr>
+                <td>Categorie:</td>
+                <td>
+                    <select name="cmbCategorie" required>
+                        @foreach (var sub in Model.SubCategories)
+                        {
+                            <option value="@sub.Id">@sub.Naam</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Correcte Antwoord:</td>
+                <td><input type="text" name="txtCorrectAntwoord" value=""  required/></td>
+            </tr>
+            <tr>
+                <td>Foute Antwoorden:<button onclick="AddAntwoordVak()" type="button">+</button></td>
+                <td><input type="text" name="txtFoutAntwoord[]"  required/></td>
+            </tr>
+        </table>
+        <input type="submit" id="AddVraagSubmitButton" class="btn btn-info" asp-controller="Vraag" asp-action="Create">
+    </form>
+}

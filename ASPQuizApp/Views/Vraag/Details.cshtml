@@ -1,0 +1,62 @@
+﻿@model VraagDetailsViewModel
+@{
+    <a class="btn btn-info" asp-controller="Vraag" asp-action="Overzicht">Terug</a>
+    <h1>Details van Vraag @Model.Id</h1>
+    <table class="table table-hover">
+        <tr>
+            <td>ID:</td>
+            <td>@Model.Id</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Vraag:</td>
+            <td>@Model.Text</td>
+            <td><partial name="~/Views/Shared/_ChangeVraagTextModalPartial.cshtml" model="@Model"/></td>
+        </tr>
+        <tr>
+            <td>SubCategorie:</td>
+            <td>@Model.SubCategorieNaam</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Antwoorden:</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        @foreach (QuizLib.Logic.Antwoord a in Model.MogelijkeAntwoorden)
+        {
+            <tr>
+                @if (a.IsCorrect)
+                {
+                    <td>Correct antwoord:</td>
+                    <td class="bg-success">@a.Text</td>
+                    <td></td>
+                }
+                else
+                {
+                    <td>Fout Antwoord:</td>
+                    <td class="bg-warning">@a.Text</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" value="@a.Id" name="txtAntwoordId" />
+                            <input type="hidden" value="@Model.Id" name="txtVraagId" />
+                            <input type="submit" class="btn btn-success" value="Correct" asp-controller="Antwoord" asp-action="SetCorrect">
+                            <input type="submit" class="btn btn-danger" value="Delete" asp-controller="Antwoord" asp-action="Delete">
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+
+        <tr>
+            <td></td>
+            <td><partial name="~/Views/Shared/_AddAntwoordModalPartial.cshtml" /></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+    
+    <partial name="~/Views/Shared/_DeleteVraagModalPartial.cshtml" />
+}

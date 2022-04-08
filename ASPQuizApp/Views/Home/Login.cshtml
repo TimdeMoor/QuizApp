@@ -1,0 +1,23 @@
+﻿<fieldset>
+    <form asp-action="LoginUser" asp-controller="Home" method="post">
+        <table class="table">
+            <tr>
+                <td><p>Gebruikersnaam</p></td>
+                <td><input type="text" name="Name" required/></td>
+            </tr>
+            <tr>
+                <td><p>Wachtwoord</p></td>
+                <td><input type="password" name="Pass" required/></td>
+            </tr>
+            <tr>
+                <td>
+                    <p></p>
+                </td>
+                <td>
+                    <input type="submit" name="btnLogin" value="Login">
+                </td>
+            </tr>
+        </table>
+        <!--<p>Geen account? Klik </p><a asp-area="" asp-controller="Home" asp-action="Register">Hier</a>-->
+    </form>
+</fieldset>

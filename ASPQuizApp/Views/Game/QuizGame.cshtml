@@ -1,0 +1,73 @@
+﻿@model QuizStatusViewModel
+<link href="~/css/MainGameStyle.css" rel="stylesheet" />
+<script src="~/js/PostQuiz.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!--Timer-->
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-2 text-center">
+            <h4>Tijd: </h4><h4 id="time"></h4>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<!--Volledige carousel-->
+<div id="mainCarousel" class="carousel slide" data-interval="false">
+    <div class="carousel-inner text-center align-self-center">
+        <div class="carousel-item active">
+            <div class="container">
+                <button class="btn-success btn-lg text-center" id="timerStartButton" href="#mainCarousel" role="button" data-slide="next">Start</button>
+            </div>
+        </div>
+        <form method="post" id="QuizForm">
+            @{int i = 1;}
+            <!--Voor elke vraag in de vragenlijst-->
+            @foreach (GameVraagViewModel GameVraag in Model.Quizvragen)
+            {
+                <div class="carousel-item">
+                    <!--Vraag-->
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-8">
+                                <div class="jumbotron">
+                                    <h3>Vraag @i</h3>
+                                    <h1>@GameVraag.Vraag.Text</h1>
+                                    <h5><b>Categorie: @GameVraag.Categorie.Naam</b></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Antwoorden-->
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="jumbotron text-center">
+                                    <div class="btn-group-lg btn-group-vertical AntwoordGroup" data-toggle="buttons" style="width:75%;">
+                                        @{int j = 0;}
+                                        @foreach (Antwoord a in GameVraag.Antwoorden)
+                                        {
+                                            <label class="btn btn-primary AntwoordLabel right carousel-control" href="#mainCarousel" data-slide="next">
+                                                <input type="radio" class="right carousel-control" name="RadioButton @i,@j" id="RadioGroup @i" value="@a.Id" required>
+                                                <a style="color:white; font-size:xx-large">@a.Text</a>
+                                            </label>
+                                            j++;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+            <!--Eindknop-->
+            <div class="carousel-item">
+                <button type="button" id="timerPauseButton" onclick="GetFormData()" class="btn-info btn-lg" value="Eind" style="height:100px; width:100px;" />Eind
+            </div>
+        </form>
+    </div>
+</div>
+

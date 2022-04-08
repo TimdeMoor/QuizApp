@@ -1,0 +1,29 @@
+﻿@model AddSubCategorieViewModel 
+@{
+    <h1>Nieuwe Subcategorie Toevoegen</h1>
+    <form method="post">
+        <table>
+            <tr>
+                <td>Naam:</td>
+                <td><input type="text" name="txtNaam"  required/></td>
+            </tr>
+            <tr>
+                <td>Categorie:</td>
+                <td>
+                    <select name="cmbCategorie">
+                        <option value=@string.Empty>GEEN</option>
+                        @foreach (var sub in Model.SubCategories)
+                        {
+                            <option value="@sub.Id">@sub.Naam</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Beschrijving:</td>
+                <td><input type="text" name="txtBeschrijving"  required/></td>
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-info" asp-controller="SubCategorie" asp-action="Create">
+    </form>
+}

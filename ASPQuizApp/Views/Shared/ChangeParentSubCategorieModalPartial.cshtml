@@ -1,0 +1,36 @@
+﻿@model SubCategorieDetailsViewModel
+@{
+    <form method="post">
+        <input type="hidden" value="@Model.Id" name="SubCategorieId" />
+        <div class="container">
+
+            <!-- Trigger -->
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ChangeSubCategorieParentModal">Verander</button>
+
+            <!-- Modal -->
+            <div class="modal" tabindex="-1" id="ChangeSubCategorieParentModal" role="dialog">
+                <div class="modal-dialog" role="document">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Verander Categorie</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body">
+                            Verander Categorie
+                            <select>
+
+                            </select>
+                        </div>
+
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-success" value="Verander" asp-controller="Vraag" asp-action="ChangeText">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
